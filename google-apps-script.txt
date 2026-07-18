@@ -1,0 +1,23 @@
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // Nếu là lần đầu chạy và sheet đang trống, tự thêm dòng tiêu đề
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Thời gian", "Họ tên", "Tuổi", "SĐT", "Giới tính", "Kinh nghiệm", "Ghi chú"]);
+  }
+
+  var data = e.parameter;
+  sheet.appendRow([
+    new Date(),
+    data["ho-ten"] || "",
+    data["tuoi"] || "",
+    data["so-dien-thoai"] || "",
+    data["gioi-tinh"] || "",
+    data["kinh-nghiem"] || "",
+    data["ghi-chu"] || ""
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ result: "success" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
