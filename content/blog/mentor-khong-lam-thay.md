@@ -3,7 +3,7 @@ title: "Vì sao Mentor không bao giờ làm thay bạn"
 category: "Mentor Notes"
 date: 2026-07-10
 excerpt: "Góc nhìn từ đội ngũ Mentor về triết lý coaching — quan sát và động viên, không cầm tay chỉ việc."
-cover: ""
+cover: "/images/blog/mentor-khong-lam-thay.png"
 ---
 
 Một câu hỏi thường gặp từ những bạn mới tìm hiểu về Chill: "Mentor có làm thay mình phần khó không?" Câu trả lời luôn là không — và đây chính là điều làm nên khác biệt trong cách Chill đào tạo Idol.
