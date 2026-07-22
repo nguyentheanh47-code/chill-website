@@ -3,7 +3,7 @@ title: "Idol mới cần chuẩn bị gì trước buổi live đầu tiên?"
 category: "Mentor Notes"
 date: 2026-07-20
 excerpt: "Từ thiết bị, ánh sáng đến âm thanh — những điều cơ bản nhưng dễ bị bỏ sót nhất."
-cover: "/images/blog/03-chuan-bi-truoc-buoi-live-dau-tien.png"
+cover: "/images/blog/03-chuan-bi-truoc-buoi-live-dau-tien.jpg"
 ---
 
 Trước khi nghĩ đến nội dung hay hay không hay, có một vài điều nền tảng ai cũng cần chuẩn bị kỹ — vì thiết bị tốt là nền tảng cho mọi buổi livestream suôn sẻ.

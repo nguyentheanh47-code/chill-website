@@ -3,7 +3,7 @@ title: "Trước khi lên sóng: Cách xác định phong cách livestream của
 category: "Mentor Notes"
 date: 2026-07-20
 excerpt: "Phong cách livestream không phải thứ có sẵn — đó là điều bạn khám phá dần cùng Mentor."
-cover: "/images/blog/02-xac-dinh-phong-cach-livestream.png"
+cover: "/images/blog/02-xac-dinh-phong-cach-livestream.jpg"
 ---
 
 Một trong những câu hỏi Mentor thường đặt ra sớm nhất với Idol mới: "Bạn muốn người xem nhớ đến mình vì điều gì?"

@@ -3,7 +3,7 @@ title: "LIVE Pro là gì? Điều kiện để đạt danh hiệu LIVE Pro"
 category: "Checklist"
 date: 2026-07-22
 excerpt: "LIVE Pro là một cột mốc nhiều Idol hướng tới — đây là những điều kiện cơ bản cần biết."
-cover: "/images/blog/08-live-pro-la-gi.png"
+cover: "/images/blog/08-live-pro-la-gi.jpg"
 ---
 
 Với những Idol đã hoạt động livestream một thời gian, LIVE Pro thường là một cột mốc được nhắc đến như một sự công nhận về mức độ chuyên nghiệp.

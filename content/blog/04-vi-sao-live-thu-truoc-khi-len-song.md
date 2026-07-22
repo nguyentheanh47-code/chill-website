@@ -3,7 +3,7 @@ title: "Vì sao Chill luôn cho Idol \"live thử\" trước khi lên sóng chí
 category: "Mentor Notes"
 date: 2026-07-20
 excerpt: "Một bước nhỏ nhưng tạo khác biệt lớn — luyện tập trong môi trường an toàn trước khi ra mắt thật."
-cover: "/images/blog/04-vi-sao-live-thu-truoc-khi-len-song.png"
+cover: "/images/blog/04-vi-sao-live-thu-truoc-khi-len-song.jpg"
 ---
 
 Nhiều nơi để Idol mới lên sóng ngay sau vài buổi hướng dẫn cơ bản. Tại Chill, luôn có một bước trung gian: live thử.

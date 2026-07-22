@@ -3,7 +3,7 @@ title: "Kịch bản livestream PK vui vẻ dành cho người mới"
 category: "Livestream Tips"
 date: 2026-07-23
 excerpt: "PK là một trong những hình thức tương tác thú vị nhất — nhưng cần giữ đúng tinh thần vui vẻ, thân thiện."
-cover: "/images/blog/18-kich-ban-livestream-pk-vui-ve.png"
+cover: "/images/blog/18-kich-ban-livestream-pk-vui-ve.jpg"
 ---
 
 PK (đối đầu trực tiếp giữa hai buổi livestream) là hình thức tương tác đặc trưng của livestream, mang tính giải trí cao khi được thực hiện với tinh thần đúng đắn.

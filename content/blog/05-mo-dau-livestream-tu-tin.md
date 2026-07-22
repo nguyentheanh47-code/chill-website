@@ -3,7 +3,7 @@ title: "Cách mở đầu livestream tự tin, không bị \"khớp\""
 category: "Livestream Tips"
 date: 2026-07-21
 excerpt: "3 giây đầu tiên quyết định người xem ở lại hay lướt qua — đây là cách mở đầu không bị khớp."
-cover: "/images/blog/05-mo-dau-livestream-tu-tin.png"
+cover: "/images/blog/05-mo-dau-livestream-tu-tin.jpg"
 ---
 
 Khoảnh khắc bấm nút Go Live thường là lúc nhiều Idol mới cảm thấy hồi hộp nhất. Đây là vài cách giúp mở đầu tự nhiên hơn, không bị "đứng hình".

@@ -3,7 +3,7 @@ title: "Làm nghề livestream cần sự kiên trì mà không ai nói cho bạ
 category: "Mentor Notes"
 date: 2026-07-24
 excerpt: "Ít người xem, chưa có thu nhập ổn định trong những ngày đầu là điều bình thường — không phải dấu hiệu bạn không phù hợp."
-cover: "/images/blog/20-nghe-livestream-can-su-kien-tri.png"
+cover: "/images/blog/20-nghe-livestream-can-su-kien-tri.jpg"
 ---
 
 Có một điều ít ai nói thẳng với những người mới bắt đầu livestream: những buổi live đầu tiên gần như luôn ít người xem, và thu nhập ổn định thường không đến ngay lập tức. Đây không phải là ngoại lệ — mà là quy luật chung.

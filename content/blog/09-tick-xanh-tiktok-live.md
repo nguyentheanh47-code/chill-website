@@ -3,7 +3,7 @@ title: "Làm sao để có tick xanh khi livestream TikTok?"
 category: "Checklist"
 date: 2026-07-22
 excerpt: "Tick xanh không chỉ là biểu tượng — đó là dấu hiệu của một quá trình hoạt động ổn định."
-cover: "/images/blog/09-tick-xanh-tiktok-live.png"
+cover: "/images/blog/09-tick-xanh-tiktok-live.jpg"
 ---
 
 Tick xanh cạnh tên tài khoản là điều nhiều Idol để ý đến khi theo dõi những nhà sáng tạo khác trên nền tảng. Vậy điều kiện để có được nó là gì?

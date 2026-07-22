@@ -3,7 +3,7 @@ title: "Quy tắc 3 giây giữ chân người xem"
 category: "Livestream Tips"
 date: 2026-07-01
 excerpt: "3 giây đầu tiên quyết định người xem ở lại hay lướt qua. Đây là cách Idol tại Chill mở đầu mỗi buổi live."
-cover: "/images/blog/quy-tac-3-giay.png"
+cover: "/images/blog/quy-tac-3-giay.jpg"
 ---
 
 Trong livestream, 3 giây đầu tiên là khoảng thời gian quyết định: người xem sẽ ở lại xem tiếp, hay lướt sang phiên live khác. Đây là quy tắc đầu tiên mà mọi Idol tại Chill được Mentor huấn luyện kỹ trước khi lên sóng.

@@ -3,7 +3,7 @@ title: "Kịch bản livestream ca hát cho người mới"
 category: "Livestream Tips"
 date: 2026-07-23
 excerpt: "Áp dụng công thức 5 phút vào livestream ca hát — giữ chân người nghe qua từng bài hát."
-cover: "/images/blog/14-kich-ban-livestream-ca-hat.png"
+cover: "/images/blog/14-kich-ban-livestream-ca-hat.jpg"
 ---
 
 Livestream ca hát có một lợi thế tự nhiên: âm nhạc dễ giữ chân người xem hơn nhiều hình thức khác. Nhưng để buổi live không chỉ đơn thuần là "hát liên tục", cần kết hợp thêm nhịp tương tác.

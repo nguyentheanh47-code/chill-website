@@ -3,7 +3,7 @@ title: "Kịch bản livestream trò chuyện — giữ chân người xem bằn
 category: "Livestream Tips"
 date: 2026-07-23
 excerpt: "Không có nhạc, không có tiết mục cụ thể — livestream trò chuyện dựa hoàn toàn vào khả năng giữ nhịp câu chuyện."
-cover: "/images/blog/15-kich-ban-livestream-tro-chuyen.png"
+cover: "/images/blog/15-kich-ban-livestream-tro-chuyen.jpg"
 ---
 
 Livestream trò chuyện là loại hình đòi hỏi nhiều ở khả năng ứng biến nhất, vì không có "tiết mục" cụ thể để dựa vào — toàn bộ buổi live xoay quanh câu chuyện và tương tác trực tiếp.

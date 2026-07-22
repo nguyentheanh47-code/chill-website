@@ -3,7 +3,7 @@ title: "Ngày đầu tiên tại Chill: Mentor đồng hành cùng bạn như th
 category: "Mentor Notes"
 date: 2026-07-20
 excerpt: "Buổi gặp đầu tiên giữa Mentor và Idol mới không phải để dạy kỹ thuật, mà để xây dựng niềm tin."
-cover: "/images/blog/01-ngay-dau-tien-tai-chill.png"
+cover: "/images/blog/01-ngay-dau-tien-tai-chill.jpg"
 ---
 
 Trước khi nói đến bất kỳ kỹ thuật livestream nào, mọi hành trình tại Chill đều bắt đầu bằng một buổi trò chuyện đơn giản: Mentor tìm hiểu về bạn.

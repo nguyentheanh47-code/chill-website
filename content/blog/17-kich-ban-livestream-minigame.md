@@ -3,7 +3,7 @@ title: "Kịch bản livestream thử thách - minigame theo yêu cầu người
 category: "Livestream Tips"
 date: 2026-07-23
 excerpt: "Minigame là cách nhanh nhất để biến người xem thụ động thành người tham gia chủ động."
-cover: "/images/blog/17-kich-ban-livestream-minigame.png"
+cover: "/images/blog/17-kich-ban-livestream-minigame.jpg"
 ---
 
 Livestream dạng thử thách - minigame có lợi thế tự nhiên trong việc tạo tương tác, vì bản chất trò chơi đã mời gọi người xem tham gia trực tiếp.

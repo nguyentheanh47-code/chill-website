@@ -3,7 +3,7 @@ title: "Vì sao Idol cần xác minh KYC trước khi nhận tiền livestream?"
 category: "Checklist"
 date: 2026-07-22
 excerpt: "KYC là bước bắt buộc nhưng nhiều Idol mới chưa hiểu rõ vì sao cần thực hiện."
-cover: "/images/blog/10-kyc-la-gi.png"
+cover: "/images/blog/10-kyc-la-gi.jpg"
 ---
 
 Nếu bạn mới bắt đầu tìm hiểu về livestream, có thể đã từng nghe đến thuật ngữ KYC mà chưa rõ vì sao đây lại là bước bắt buộc.

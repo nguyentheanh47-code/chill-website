@@ -3,7 +3,7 @@ title: "Checklist trước khi bấm Go Live"
 category: "Checklist"
 date: 2026-07-05
 excerpt: "Từ ánh sáng, âm thanh đến tâm lý — danh sách kiểm tra giúp Idol tự tin trước mỗi buổi phát sóng."
-cover: "/images/blog/checklist-go-live.png"
+cover: "/images/blog/checklist-go-live.jpg"
 ---
 
 Trước mỗi buổi livestream, có một khoảng thời gian ngắn nhưng quan trọng: vài phút chuẩn bị trước khi bấm nút Go Live. Đây là checklist mà Idol tại Chill được hướng dẫn thực hiện, giúp buổi live diễn ra suôn sẻ ngay từ phút đầu tiên.

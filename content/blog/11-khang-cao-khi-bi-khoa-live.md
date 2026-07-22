@@ -3,7 +3,7 @@ title: "Bị cấm livestream oan? Cách kháng cáo đúng chuẩn"
 category: "Checklist"
 date: 2026-07-22
 excerpt: "Nếu cảm thấy bị hạn chế livestream không đúng, đây là quy trình kháng cáo Idol nên biết."
-cover: "/images/blog/11-khang-cao-khi-bi-khoa-live.png"
+cover: "/images/blog/11-khang-cao-khi-bi-khoa-live.jpg"
 ---
 
 Đôi khi tài khoản có thể bị hạn chế tính năng livestream do vi phạm được hệ thống ghi nhận — nhưng nếu bạn tin rằng đây là sự nhầm lẫn, vẫn có quy trình để phản hồi lại.

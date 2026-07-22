@@ -3,7 +3,7 @@ title: "Kịch bản livestream nhảy múa: nhịp điệu và tương tác"
 category: "Livestream Tips"
 date: 2026-07-23
 excerpt: "Livestream nhảy múa cần cân bằng giữa trình diễn và duy trì kết nối với người xem."
-cover: "/images/blog/16-kich-ban-livestream-nhay-mua.png"
+cover: "/images/blog/16-kich-ban-livestream-nhay-mua.jpg"
 ---
 
 Livestream nhảy múa mang tính trình diễn cao, nhưng vẫn cần áp dụng nhịp tương tác đều đặn để không biến buổi live thành một video trình diễn một chiều.

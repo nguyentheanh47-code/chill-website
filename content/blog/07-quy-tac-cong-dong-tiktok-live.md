@@ -3,7 +3,7 @@ title: "Quy tắc cộng đồng TikTok LIVE: những điều Idol cần biết 
 category: "Checklist"
 date: 2026-07-22
 excerpt: "Hiểu rõ quy tắc cộng đồng giúp Idol tránh những vi phạm không đáng có khi livestream."
-cover: "/images/blog/07-quy-tac-cong-dong-tiktok-live.png"
+cover: "/images/blog/07-quy-tac-cong-dong-tiktok-live.jpg"
 ---
 
 Trước khi bắt đầu livestream thường xuyên, việc hiểu rõ quy tắc cộng đồng của nền tảng là điều mọi Idol nên nắm — không phải để sợ hãi, mà để tự tin hoạt động lâu dài.

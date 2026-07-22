@@ -3,7 +3,7 @@ title: "Idol bị tụt mood khi đang live thì nên làm gì?"
 category: "Mentor Notes"
 date: 2026-07-24
 excerpt: "Tụt năng lượng giữa buổi live là điều bình thường — quan trọng là biết cách lấy lại nhịp."
-cover: "/images/blog/19-idol-tut-mood-khi-live-nen-lam-gi.png"
+cover: "/images/blog/19-idol-tut-mood-khi-live-nen-lam-gi.jpg"
 ---
 
 Ngay cả những Idol dày dạn kinh nghiệm nhất cũng có những buổi live cảm thấy mất năng lượng giữa chừng. Đây là điều hoàn toàn bình thường, không phải dấu hiệu của sự thất bại.
