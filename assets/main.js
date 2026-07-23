@@ -49,9 +49,10 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
     "/images/hero-home-1.jpg",
     "/images/hero-home-2.jpg",
     "/images/hero-home-3.jpg",
-    "/images/hero-home-4.jpg"
+    "/images/hero-home-4.jpg",
+    "/images/hero-home-5.jpg"
     // Thêm ảnh mới: chỉ cần thêm 1 dòng nữa vào đây, ví dụ:
-    // ,"/images/hero-home-5.jpg"
+    // ,"/images/hero-home-6.jpg"
     // rồi upload đúng file ảnh đó vào /images/ — không cần sửa gì khác.
   ];
   var SLIDE_INTERVAL_MS = 4000; // 4 giây mỗi ảnh
