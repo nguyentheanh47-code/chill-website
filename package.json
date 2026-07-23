@@ -1,0 +1,10 @@
+{
+  "name": "chill-website-build",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "marked": "4.3.0"
+  }
+}
