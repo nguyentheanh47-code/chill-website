@@ -84,7 +84,9 @@ function loadAllPosts() {
 
 // ---------- HTML helpers (khớp với style.css / class hiện có) ----------
 
-function headHTML(title, description) {
+function headHTML(title, description, ogImage, ogUrl, ogType) {
+  const image = ogImage ? (ogImage.startsWith("http") ? ogImage : "https://chillentertainment.vn" + ogImage) : "https://chillentertainment.vn/images/logo.png";
+  const url = ogUrl ? "https://chillentertainment.vn" + ogUrl : "https://chillentertainment.vn/";
   return `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
@@ -93,7 +95,17 @@ function headHTML(title, description) {
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">`;
+<link rel="stylesheet" href="/assets/style.css">
+<meta property="og:type" content="${ogType || "website"}">
+<meta property="og:site_name" content="Chill Entertainment">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:image" content="${image}">
+<meta property="og:url" content="${url}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${description}">
+<meta name="twitter:image" content="${image}">`;
 }
 
 function headerHTML() {
@@ -168,7 +180,7 @@ function buildPostPage(post, allPosts) {
   return `<!DOCTYPE html>
 <html lang="vi">
 <head>
-${headHTML(post.title + " — Chill Entertainment", post.excerpt)}
+${headHTML(post.title + " — Chill Entertainment", post.excerpt, post.cover, "/tips/" + post.slug + "/", "article")}
 ${jsonLd}
 </head>
 <body>
@@ -214,7 +226,7 @@ function buildBlogListPage(allPosts) {
   return `<!DOCTYPE html>
 <html lang="vi">
 <head>
-${headHTML("Blog / Tips — Chill Entertainment", "Chia sẻ livestream thực tế, đúc kết từ Mentor và Idol tại Chill Entertainment.")}
+${headHTML("Blog / Tips — Chill Entertainment", "Chia sẻ livestream thực tế, đúc kết từ Mentor và Idol tại Chill Entertainment.", null, "/tips/", "website")}
 </head>
 <body>
 
