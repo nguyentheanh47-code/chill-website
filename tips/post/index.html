@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+  // Chuyển hướng ngay lập tức sang trang bài viết mới (URL đẹp, không giật hình)
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get("slug");
+    if (slug) {
+      var cleanSlug = slug.replace(/^\d+-/, "");
+      window.location.replace("/tips/" + cleanSlug + "/");
+    }
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bài viết — Chill Entertainment</title>
