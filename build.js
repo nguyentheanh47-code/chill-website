@@ -261,6 +261,44 @@ ${footerHTML()}
 `;
 }
 
+// ---------- sitemap.xml ----------
+
+function buildSitemap(posts) {
+  const today = new Date().toISOString().slice(0, 10);
+  const staticPages = [
+    { url: "/", priority: "1.0" },
+    { url: "/gioi-thieu/", priority: "0.8" },
+    { url: "/mentor/", priority: "0.8" },
+    { url: "/hall-of-fame/", priority: "0.7" },
+    { url: "/tips/", priority: "0.8" },
+    { url: "/lien-he/", priority: "0.9" },
+    { url: "/faq/", priority: "0.7" },
+  ];
+
+  const staticEntries = staticPages.map(
+    (p) => `  <url>
+    <loc>https://chillentertainment.vn${p.url}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>${p.priority}</priority>
+  </url>`
+  );
+
+  const postEntries = posts.map(
+    (p) => `  <url>
+    <loc>https://chillentertainment.vn/tips/${p.slug}/</loc>
+    <lastmod>${p.date || today}</lastmod>
+    <priority>0.6</priority>
+  </url>`
+  );
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticEntries.join("\n")}
+${postEntries.join("\n")}
+</urlset>
+`;
+}
+
 // ---------- Chạy build ----------
 
 function main() {
@@ -299,6 +337,10 @@ function main() {
     );
     fs.writeFileSync(mentorPath, mentorHTML);
   }
+
+  // 6. Tạo sitemap.xml
+  fs.writeFileSync(path.join(OUT, "sitemap.xml"), buildSitemap(posts));
+  console.log("Đã tạo sitemap.xml");
 
   console.log("Build xong. Nội dung nằm trong thư mục dist/");
 }
