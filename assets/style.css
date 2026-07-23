@@ -69,6 +69,25 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:18
 .btn-primary, .btn-outline{ transition:transform .25s ease, box-shadow .25s ease, background .2s ease, color .2s ease; }
 .navcta{ display:flex; align-items:center; gap:20px; }
 
+.nav-search-btn{
+  display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+  border-radius:50%; color:var(--ink-70); transition:background .2s ease, color .2s ease; flex:none;
+}
+.nav-search-btn:hover{ background:var(--line); color:var(--ink); }
+.nav-search-btn svg{ width:19px; height:19px; }
+
+.blog-search{ max-width:480px; margin:0 auto 40px; position:relative; }
+.blog-search svg{ position:absolute; left:16px; top:50%; transform:translateY(-50%); width:18px; height:18px; color:var(--ink-40); }
+.blog-search input{
+  width:100%; padding:13px 16px 13px 44px; border:1px solid var(--line); border-radius:999px;
+  font-family:inherit; font-size:14px; background:#fff;
+}
+.blog-search input:focus{ outline:none; border-color:var(--pink); }
+
+.tc-hidden{ display:none !important; }
+.blog-loadmore{ text-align:center; margin-top:32px; }
+.blog-empty{ text-align:center; color:var(--ink-40); font-size:14px; padding:40px 0; }
+
 /* PAGE HERO (banner cho các trang con) */
 .page-hero{
   padding:64px 0 56px;

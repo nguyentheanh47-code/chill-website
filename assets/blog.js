@@ -83,16 +83,16 @@ var GITHUB_BRANCH = "main";
   // ---- Trang danh sách blog (/tips/) ----
   var listEl = document.getElementById("blog-list");
   if (listEl) {
-    if (notConfigured()) {
-      listEl.innerHTML = '<p style="color:var(--ink-40); font-size:14px;">Chưa cấu hình GitHub — xem hướng dẫn Claude gửi để hoàn tất Bước 1-3.</p>';
-    } else {
-      listEl.innerHTML = '<p style="color:var(--ink-40); font-size:14px;">Đang tải bài viết...</p>';
+    // Trang đã có sẵn danh sách bài viết dạng HTML tĩnh (để công cụ tìm kiếm đọc được).
+    // Ở đây chỉ thử tải bản mới nhất từ GitHub để cập nhật nếu có bài mới —
+    // nếu tải lỗi hoặc chưa cấu hình, GIỮ NGUYÊN danh sách tĩnh đã có, không xoá.
+    if (window.ChillBlogSetup) window.ChillBlogSetup();
+    if (!notConfigured()) {
       fetchAllPosts(function (posts) {
-        if (!posts.length) {
-          listEl.innerHTML = '<p style="color:var(--ink-40); font-size:14px;">Chưa có bài viết nào.</p>';
-          return;
+        if (posts.length) {
+          listEl.innerHTML = posts.map(cardHTML).join("");
         }
-        listEl.innerHTML = posts.map(cardHTML).join("");
+        if (window.ChillBlogSetup) window.ChillBlogSetup();
       });
     }
   }

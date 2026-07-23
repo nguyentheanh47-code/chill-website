@@ -96,4 +96,85 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
     );
     targets.forEach(function (el) { io.observe(el); });
   }
+
+  // ---- 3. Icon tìm kiếm ở menu ----
+  var navSearchBtn = document.getElementById("navSearchBtn");
+  if (navSearchBtn) {
+    navSearchBtn.addEventListener("click", function (e) {
+      var onTipsListPage = window.location.pathname.replace(/\/$/, "") === "/tips";
+      if (onTipsListPage) {
+        e.preventDefault();
+        var input = document.getElementById("blogSearchInput");
+        if (input) {
+          input.scrollIntoView({ behavior: "smooth", block: "center" });
+          input.focus();
+        }
+      }
+      // Nếu không phải trang /tips/, để link chạy bình thường (chuyển tới /tips/)
+    });
+  }
+
+  // ---- 4. Trang Blog/Tips: phân trang "Xem thêm" (3 bài đầu, mỗi lần bấm hiện thêm 6) + tìm kiếm trực tiếp ----
+  window.ChillBlogSetup = function () {
+    var listEl = document.getElementById("blog-list");
+    var loadMoreWrap = document.getElementById("blogLoadMoreWrap");
+    var loadMoreBtn = document.getElementById("blogLoadMoreBtn");
+    var searchInput = document.getElementById("blogSearchInput");
+    var emptyMsg = document.getElementById("blogEmptyMsg");
+    if (!listEl || !loadMoreBtn) return;
+
+    var INITIAL_COUNT = 3;
+    var STEP_COUNT = 6;
+    var visibleCount = INITIAL_COUNT;
+
+    function getCards() {
+      return Array.prototype.slice.call(listEl.querySelectorAll(".tip-card"));
+    }
+
+    function normalize(str) {
+      return (str || "").toLowerCase();
+    }
+
+    function applyPagination() {
+      var cards = getCards();
+      cards.forEach(function (card, i) {
+        card.classList.toggle("tc-hidden", i >= visibleCount);
+      });
+      loadMoreWrap.style.display = visibleCount < cards.length ? "block" : "none";
+      emptyMsg.style.display = "none";
+    }
+
+    function applySearch(query) {
+      var cards = getCards();
+      var q = normalize(query.trim());
+      if (!q) {
+        loadMoreWrap.style.display = "";
+        visibleCount = INITIAL_COUNT;
+        applyPagination();
+        return;
+      }
+      var matchCount = 0;
+      cards.forEach(function (card) {
+        var text = normalize(card.textContent);
+        var match = text.indexOf(q) !== -1;
+        card.classList.toggle("tc-hidden", !match);
+        if (match) matchCount++;
+      });
+      loadMoreWrap.style.display = "none";
+      emptyMsg.style.display = matchCount === 0 ? "block" : "none";
+    }
+
+    applyPagination();
+
+    loadMoreBtn.onclick = function () {
+      visibleCount += STEP_COUNT;
+      applyPagination();
+    };
+
+    if (searchInput) {
+      searchInput.oninput = function () {
+        applySearch(searchInput.value);
+      };
+    }
+  };
 })();
