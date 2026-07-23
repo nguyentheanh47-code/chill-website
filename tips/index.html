@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog / Tips — Chill Entertainment</title>
-<meta name="description" content="Kiến thức livestream thực tế, đúc kết từ Mentor và Idol tại Chill Entertainment.">
+<meta name="description" content="Chia sẻ livestream thực tế, đúc kết từ Mentor và Idol tại Chill Entertainment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
@@ -24,7 +24,7 @@
       <li><a href="/tips/" class="active">Blog/Tips</a></li>
       <li><a href="/lien-he/">Liên hệ</a></li>
     </ul>
-    <div class="navcta"><a href="/lien-he/" class="btn btn-primary">Đăng ký ứng tuyển</a></div>
+    <a href="/tips/" class="nav-search-btn" id="navSearchBtn" aria-label="Tìm kiếm bài viết" title="Tìm kiếm bài viết"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a><div class="navcta"><a href="/lien-he/" class="btn btn-primary">Đăng ký ứng tuyển</a></div>
   </nav>
 </header>
 
@@ -32,13 +32,17 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="/">Trang chủ</a> / Blog &amp; Tips</div>
     <span class="eyebrow">Blog / Tips</span>
-    <h1>Kiến thức<br>từ Chill.</h1>
+    <h1>Chia sẻ<br>từ Chill.</h1>
     <p>Những bài viết ngắn, thực tế — được đúc kết từ chính Mentor và Idol tại Chill Entertainment.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
+    <div class="blog-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="blogSearchInput" placeholder="Tìm bài viết theo từ khoá, chuyên mục...">
+    </div>
     <div class="card-row" id="blog-list">
       <a href="/tips/post/?slug=19-idol-tut-mood-khi-live-nen-lam-gi" class="tip-card"><div class="tip-thumb"><img src="/images/blog/19-idol-tut-mood-khi-live-nen-lam-gi.jpg" alt="Idol bị tụt mood khi đang live thì nên làm gì?"></div><div class="tip-body"><span class="tip-cat">Mentor Notes</span><h4>Idol bị tụt mood khi đang live thì nên làm gì?</h4><p>Tụt năng lượng giữa buổi live là điều bình thường — quan trọng là biết cách lấy lại nhịp.</p><span class="tip-readmore">Đọc bài viết →</span></div></a>
       <a href="/tips/post/?slug=20-nghe-livestream-can-su-kien-tri" class="tip-card"><div class="tip-thumb"><img src="/images/blog/20-nghe-livestream-can-su-kien-tri.jpg" alt="Làm nghề livestream cần sự kiên trì mà không ai nói cho bạn biết"></div><div class="tip-body"><span class="tip-cat">Mentor Notes</span><h4>Làm nghề livestream cần sự kiên trì mà không ai nói cho bạn biết</h4><p>Ít người xem, chưa có thu nhập ổn định trong những ngày đầu là điều bình thường — không phải dấu hiệu bạn không phù hợp.</p><span class="tip-readmore">Đọc bài viết →</span></div></a>
@@ -64,6 +68,8 @@
       <a href="/tips/post/?slug=checklist-go-live" class="tip-card"><div class="tip-thumb"><img src="/images/blog/checklist-go-live.jpg" alt="Checklist trước khi bấm Go Live"></div><div class="tip-body"><span class="tip-cat">Checklist</span><h4>Checklist trước khi bấm Go Live</h4><p>Từ ánh sáng, âm thanh đến tâm lý — danh sách kiểm tra giúp Idol tự tin trước mỗi buổi phát sóng.</p><span class="tip-readmore">Đọc bài viết →</span></div></a>
       <a href="/tips/post/?slug=quy-tac-3-giay" class="tip-card"><div class="tip-thumb"><img src="/images/blog/quy-tac-3-giay.jpg" alt="Quy tắc 3 giây giữ chân người xem"></div><div class="tip-body"><span class="tip-cat">Livestream Tips</span><h4>Quy tắc 3 giây giữ chân người xem</h4><p>3 giây đầu tiên quyết định người xem ở lại hay lướt qua. Đây là cách Idol tại Chill mở đầu mỗi buổi live.</p><span class="tip-readmore">Đọc bài viết →</span></div></a>
     </div>
+    <div class="blog-loadmore" id="blogLoadMoreWrap"><button type="button" class="btn btn-outline" id="blogLoadMoreBtn">Xem thêm</button></div>
+    <p class="blog-empty" id="blogEmptyMsg" style="display:none;">Không tìm thấy bài viết nào phù hợp.</p>
   </div>
 </section>
 
