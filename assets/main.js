@@ -55,7 +55,7 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
     // ,"/images/hero-home-6.jpg"
     // rồi upload đúng file ảnh đó vào /images/ — không cần sửa gì khác.
   ];
-  var SLIDE_INTERVAL_MS = 4000; // 4 giây mỗi ảnh
+  var SLIDE_INTERVAL_MS = 2000; // 2 giây mỗi ảnh
 
   var sliderEl = document.getElementById("hero-slider");
   if (sliderEl) {
