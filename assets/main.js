@@ -178,4 +178,49 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
       };
     }
   };
+  // ---- 5. Hiệu ứng nghiêng nhẹ theo chuột (3D tilt) — chỉ bật trên thiết bị có chuột thật ----
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasFineMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (hasFineMouse && !prefersReducedMotion) {
+    var tiltCards = document.querySelectorAll(".tip-card, .podium-card");
+    tiltCards.forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -6;
+        var rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 6;
+        card.style.transform =
+          "perspective(800px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateY(-4px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      });
+    });
+
+    // ---- 6. Chiều sâu nhẹ khi cuộn (parallax) cho quầng sáng trang trí đầu trang ----
+    var heroSections = document.querySelectorAll(".page-hero");
+    if (heroSections.length) {
+      var ticking = false;
+      function updateHeroParallax() {
+        heroSections.forEach(function (hero) {
+          var rect = hero.getBoundingClientRect();
+          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+          hero.style.setProperty("--parallax-y", (window.scrollY * 0.06).toFixed(1) + "px");
+        });
+        ticking = false;
+      }
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (!ticking) {
+            window.requestAnimationFrame(updateHeroParallax);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
 })();
