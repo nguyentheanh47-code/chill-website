@@ -312,6 +312,7 @@ section{ padding:96px 0; }
 .article-cover{ max-width:900px; margin:0 auto 48px; aspect-ratio:16/9; border-radius:24px; overflow:hidden; background:linear-gradient(160deg,var(--cyan-soft),var(--pink-soft)); display:flex; align-items:center; justify-content:center; }
 .article-cover img{ width:100%; height:100%; object-fit:cover; }
 .article-body{ max-width:720px; margin:0 auto; font-size:17px; line-height:1.85; color:var(--ink-70); }
+.article-body p{ text-align:justify; text-justify:inter-word; }
 .article-body h2{ font-size:24px; color:var(--ink); margin:40px 0 16px; }
 .article-body p{ margin-bottom:20px; }
 .article-body ul{ margin:0 0 20px 0; }
