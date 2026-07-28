@@ -251,7 +251,7 @@ ${headHTML("Blog / Tips — Chill Entertainment", "Chia sẻ livestream thực t
 
 ${headerHTML()}
 
-<section style="padding-top:56px; padding-bottom:0;">
+<section class="page-hero" style="padding-bottom:0;">
   <div class="wrap">
     <div class="breadcrumb"><a href="/">Trang chủ</a> / Blog & Tips</div>
     <span class="eyebrow">Blog / Tips</span>
