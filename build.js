@@ -255,7 +255,7 @@ ${headerHTML()}
   <div class="wrap">
     <div class="breadcrumb"><a href="/">Trang chủ</a> / Blog & Tips</div>
     <span class="eyebrow">Blog / Tips</span>
-    <h1>Chia sẻ<br>từ Chill.</h1>
+    <h1>Chia sẻ từ Chill.</h1>
     <p>Những bài viết ngắn, thực tế — được đúc kết từ chính Mentor và Idol tại Chill Entertainment.</p>
   </div>
 </section>
