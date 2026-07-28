@@ -75,6 +75,7 @@ function loadAllPosts() {
       excerpt: meta.excerpt || "",
       cover: meta.cover || "",
       focus_keyword: meta.focus_keyword || "",
+      related_slugs: (meta.related_slugs || "").split(",").map((s) => s.trim()).filter(Boolean),
       bodyHTML: marked.parse(body || ""),
     };
   });
@@ -162,7 +163,25 @@ function cardHTML(p) {
 // ---------- Trang chi tiết 1 bài viết ----------
 
 function buildPostPage(post, allPosts) {
-  const related = allPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  var related;
+  if (post.related_slugs && post.related_slugs.length) {
+    // Ưu tiên bài viết được chọn tay trong frontmatter (related_slugs)
+    related = post.related_slugs
+      .map((slug) => allPosts.find((p) => p.slug === slug))
+      .filter(Boolean)
+      .slice(0, 2);
+  }
+  if (!related || !related.length) {
+    // Không có lựa chọn tay -> ưu tiên bài cùng chuyên mục, gần nhất
+    const sameCategory = allPosts.filter((p) => p.slug !== post.slug && p.category === post.category);
+    related = sameCategory.slice(0, 2);
+  }
+  if (related.length < 2) {
+    // Vẫn thiếu -> bổ sung bằng bài mới nhất khác (không trùng những bài đã chọn)
+    const chosenSlugs = new Set(related.map((p) => p.slug));
+    const fallback = allPosts.filter((p) => p.slug !== post.slug && !chosenSlugs.has(p.slug));
+    related = related.concat(fallback.slice(0, 2 - related.length));
+  }
   const coverHTML = post.cover ? `<img src="${post.cover}" alt="${post.title}">` : "";
 
   const jsonLd = `<script type="application/ld+json">
