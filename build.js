@@ -97,6 +97,7 @@ function headHTML(title, description, ogImage, ogUrl, ogType) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="canonical" href="${url}">
 <meta property="og:type" content="${ogType || "website"}">
 <meta property="og:site_name" content="Chill Entertainment">
 <meta property="og:title" content="${title}">
@@ -132,7 +133,7 @@ function footerHTML() {
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <div class="footer-logo"><img src="/images/logo-white.png" alt="Chill Entertainment"></div>
+        <div class="footer-logo"><img src="/images/logo-white.png" alt="Chill Entertainment" loading="lazy"></div>
         <p style="max-width:280px; font-size:13px; line-height:1.6;">Học viện đào tạo và phát triển Idol Livestream.</p>
       </div>
       <div class="footer-links">
@@ -148,7 +149,7 @@ function footerHTML() {
 }
 
 function cardHTML(p) {
-  const img = p.cover ? `<img src="${p.cover}" alt="${p.title}">` : "";
+  const img = p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">` : "";
   return `<a href="/tips/${p.slug}/" class="tip-card">
   <div class="tip-thumb">${img}</div>
   <div class="tip-body">
