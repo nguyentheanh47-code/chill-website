@@ -333,6 +333,7 @@ section{ padding:96px 0; }
 .trust-list li{ display:flex; gap:10px; margin-bottom:10px; font-size:15px; color:var(--ink-70); }
 .trust-list li:last-child{ margin-bottom:0; }
 .trust-list li::before{ content:'✓'; font-weight:700; color:var(--pink); flex:none; }
+.contact-form-col .trust-box{ margin:0 0 24px; }
 
 .podium-progress{
   font-size:13px; color:var(--ink-70); background:var(--cyan-soft);
