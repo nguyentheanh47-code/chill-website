@@ -104,7 +104,9 @@
   .vibe-ring{width:auto; height:auto; max-width:none; display:flex; flex-direction:column; gap:20px; align-items:center;}
   .vibe-center-badge{position:static; transform:none; order:-1; margin-bottom:6px;}
   .vibe-star{position:static; margin:0; transform:none !important; width:100%; max-width:320px;}
-  .vibe-footer{text-align:center; padding:30px 0 60px; opacity:0.6; font-size:13px;}
+}
+
+.vibe-footer{text-align:center; padding:30px 0 60px; opacity:0.6; font-size:13px;}
 .vibe-footer a{color:var(--v-cyan); text-decoration:none;}
 .vibe-footer a:hover{text-decoration:underline;}
 
