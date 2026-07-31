@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Hôm Nay — Check Vibe Vũ Trụ | Chill Entertainment</title>
+<meta name="description" content="Nhập tên và ngày sinh để xem vibe hôm nay của bạn — luận giải từ Vũ Trụ và bản dịch Gen Z từ Mr. Chill.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/check-vibe/vibe.css">
+<link rel="canonical" href="https://chillentertainment.vn/check-vibe/vibe-hom-nay/">
+</head>
+<body class="vibe-body">
+
+<div class="vibe-stars"></div>
+<div class="vibe-nebula"></div>
+
+<header class="vibe-header">
+  <div class="wrap vibe-header-inner">
+    <a href="/check-vibe/" class="vibe-back">← Check Vibe Vũ Trụ</a>
+    <a href="/" class="vibe-logo"><img src="/images/logo-white.png" alt="Chill Entertainment"></a>
+  </div>
+</header>
+
+<div class="xam-wrap">
+  <div class="vibe-eyebrow">🌙 Vibe Hôm Nay</div>
+  <h1 style="font-size:clamp(28px,5vw,40px); font-weight:900; margin-bottom:12px;">Hôm nay của bạn thế nào?</h1>
+  <p class="xam-hint">Nhập tên và ngày sinh, vũ trụ sẽ nói cho bạn biết năng lượng hôm nay</p>
+
+  <div id="vibeForm" style="margin-top:30px;">
+    <input type="text" id="vibeName" placeholder="Tên của bạn" style="width:100%; max-width:320px; padding:14px 18px; border-radius:999px; border:1px solid rgba(255,233,168,0.3); background:rgba(255,255,255,0.04); color:#F5F3FF; font-family:inherit; font-size:15px; margin-bottom:14px; text-align:center;">
+    <br>
+    <input type="date" id="vibeBirthday" style="width:100%; max-width:320px; padding:14px 18px; border-radius:999px; border:1px solid rgba(255,233,168,0.3); background:rgba(255,255,255,0.04); color:#F5F3FF; font-family:inherit; font-size:15px; margin-bottom:20px; text-align:center;">
+    <br>
+    <button class="xam-btn" id="vibeSubmitBtn">Xem vibe hôm nay</button>
+    <p id="vibeError" style="display:none; color:#FE2C55; font-size:13px; margin-top:14px;"></p>
+  </div>
+
+  <div class="xam-result" id="vibeResult">
+    <span class="xam-bac" id="vibeBadge"></span>
+    <p id="vibeGreeting" style="font-weight:700; margin-bottom:16px;"></p>
+    <p>🌌 <b>Vũ trụ gửi vibe hôm nay cho bạn:</b> <span id="vibeVutru"></span></p>
+    <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="vibeChill"></span></p>
+    <a href="#" class="xam-again" id="vibeAgain">↺ Xem lại cho người khác</a>
+  </div>
+</div>
+
+<footer class="vibe-footer">
+  <div class="wrap">
+    <p>Một sản phẩm giải trí từ <a href="/">Chill Entertainment</a> — Học viện đào tạo Idol Livestream</p>
+  </div>
+</footer>
+
+<script src="/check-vibe/vibe-hom-nay/vibe-data.js"></script>
+<script>
+(function(){
+  var form = document.getElementById('vibeForm');
+  var nameInput = document.getElementById('vibeName');
+  var birthdayInput = document.getElementById('vibeBirthday');
+  var submitBtn = document.getElementById('vibeSubmitBtn');
+  var errorEl = document.getElementById('vibeError');
+  var resultEl = document.getElementById('vibeResult');
+  var badgeEl = document.getElementById('vibeBadge');
+  var greetingEl = document.getElementById('vibeGreeting');
+  var vutruEl = document.getElementById('vibeVutru');
+  var chillEl = document.getElementById('vibeChill');
+  var againLink = document.getElementById('vibeAgain');
+
+  submitBtn.addEventListener('click', function(){
+    var ten = nameInput.value.trim();
+    var ngaySinh = birthdayInput.value;
+
+    if (!ten) {
+      showError('Bạn nhập tên giúp mình nha!');
+      return;
+    }
+    if (!ngaySinh) {
+      showError('Bạn chọn ngày sinh giúp mình nha!');
+      return;
+    }
+
+    var d = new Date(ngaySinh + 'T00:00:00');
+    var cung = timCungHoangDao(d.getMonth() + 1, d.getDate());
+
+    var homNay = new Date();
+    var tiet = timTietKhiHomNay(homNay);
+
+    if (!tiet || !VIBE_CONTENT[tiet.ten] || !VIBE_CONTENT[tiet.ten][cung]) {
+      showError('Nội dung cho giai đoạn này đang được vũ trụ soạn tiếp — quay lại sau nha! (Bản thử nghiệm hiện chỉ có tiết Đại Thử)');
+      return;
+    }
+
+    var data = VIBE_CONTENT[tiet.ten][cung];
+    badgeEl.textContent = tiet.ten + ' · ' + cung;
+    greetingEl.textContent = 'Chào ' + ten + '!';
+    vutruEl.textContent = data.vutru;
+    chillEl.textContent = data.chill;
+
+    form.style.display = 'none';
+    resultEl.classList.add('show');
+    errorEl.style.display = 'none';
+  });
+
+  function showError(msg){
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  againLink.addEventListener('click', function(e){
+    e.preventDefault();
+    resultEl.classList.remove('show');
+    form.style.display = 'block';
+    nameInput.value = '';
+    birthdayInput.value = '';
+  });
+})();
+</script>
+
+</body>
+</html>
