@@ -41,8 +41,8 @@
   padding:8px 16px; border-radius:999px; transition:opacity .2s ease;
 }
 .vibe-back:hover{opacity:1;}
-.vibe-logo{font-weight:900; font-size:15px; color:var(--v-cyan); text-decoration:none;}
-.vibe-logo span{color:var(--gold);}
+.vibe-logo{display:flex; align-items:center; text-decoration:none;}
+.vibe-logo img{height:26px; width:auto; filter:brightness(0) invert(1);}
 
 .vibe-hero{text-align:center; padding:40px 0 70px;}
 .vibe-eyebrow{
@@ -57,35 +57,15 @@
 }
 .vibe-hero p{font-size:16px; opacity:0.75; max-width:460px; margin:0 auto;}
 
-.vibe-constellation{position:relative; padding:20px 0 90px; min-height:520px;}
-.vibe-lines{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
-.vibe-lines path{stroke:rgba(255,233,168,0.3); stroke-width:1.5; fill:none; stroke-dasharray:4 6;}
+.vibe-constellation{position:relative; padding:20px 0 100px;}
 
-.vibe-star{
-  position:absolute; width:210px; text-align:center; z-index:2;
-  text-decoration:none; color:var(--v-text);
-  transition:transform .25s ease;
+.vibe-ring{
+  position:relative; width:520px; height:520px; max-width:90vw; max-height:90vw;
+  margin:0 auto;
 }
-.vibe-star:not(.soon):hover{transform:translateY(-6px);}
-.vibe-star.soon{opacity:0.45; cursor:default;}
-.vibe-star-icon{
-  width:60px; height:60px; border-radius:50%; margin:0 auto 12px;
-  display:flex; align-items:center; justify-content:center; font-size:26px;
-  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.25), rgba(107,63,160,0.4));
-  border:1px solid rgba(255,233,168,0.5);
-  box-shadow:0 0 26px rgba(255,233,168,0.2);
-}
-.vibe-star h4{font-size:15px; margin-bottom:6px; color:var(--gold);}
-.vibe-star p{font-size:12px; opacity:0.65; line-height:1.5;}
-
-.n1{top:0; left:0;}
-.n2{top:36px; right:0;}
-.n3{bottom:50px; left:30px;}
-.n4{bottom:0; right:50px;}
-
 .vibe-center-badge{
   position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:100px; height:100px; border-radius:50%; z-index:1;
+  width:100px; height:100px; border-radius:50%; z-index:2;
   background:conic-gradient(from 0deg, var(--v-pink), var(--nebula), var(--v-cyan), var(--v-pink));
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 0 50px rgba(37,244,238,0.3);
@@ -96,7 +76,35 @@
   text-align:center; line-height:1.3;
 }
 
-.vibe-footer{text-align:center; padding:30px 0 60px; opacity:0.6; font-size:13px;}
+.vibe-star{
+  position:absolute; top:50%; left:50%; width:190px; margin-left:-95px; margin-top:-70px;
+  text-align:center; z-index:1; text-decoration:none; color:var(--v-text);
+  transition:transform .25s ease;
+}
+.vibe-star:not(.soon):hover{transform:scale(1.05) translateY(-4px) !important;}
+.vibe-star.soon{opacity:0.4; cursor:default;}
+
+/* đặt 4 điểm quanh vòng tròn bán kính 220px, góc 45/135/225/315 độ */
+.pos-1{ transform:translate(-155px, -155px); }
+.pos-2{ transform:translate(155px, -155px); }
+.pos-3{ transform:translate(-155px, 155px); }
+.pos-4{ transform:translate(155px, 155px); }
+
+.vibe-star-icon{
+  width:58px; height:58px; border-radius:50%; margin:0 auto 10px;
+  display:flex; align-items:center; justify-content:center; font-size:25px;
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.25), rgba(107,63,160,0.4));
+  border:1px solid rgba(255,233,168,0.5);
+  box-shadow:0 0 26px rgba(255,233,168,0.2);
+}
+.vibe-star h4{font-size:15px; margin-bottom:6px; color:var(--gold);}
+.vibe-star p{font-size:12px; opacity:0.65; line-height:1.5;}
+
+@media (max-width:720px){
+  .vibe-ring{width:auto; height:auto; max-width:none; display:flex; flex-direction:column; gap:20px; align-items:center;}
+  .vibe-center-badge{position:static; transform:none; order:-1; margin-bottom:6px;}
+  .vibe-star{position:static; margin:0; transform:none !important; width:100%; max-width:320px;}
+  .vibe-footer{text-align:center; padding:30px 0 60px; opacity:0.6; font-size:13px;}
 .vibe-footer a{color:var(--v-cyan); text-decoration:none;}
 .vibe-footer a:hover{text-decoration:underline;}
 
