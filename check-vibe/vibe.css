@@ -60,15 +60,17 @@
 .vibe-constellation{position:relative; padding:20px 0 100px;}
 
 .vibe-ring{
-  position:relative; width:520px; height:520px; max-width:90vw; max-height:90vw;
-  margin:0 auto;
+  max-width:720px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  align-items:center; justify-items:center;
 }
 .vibe-center-badge{
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:100px; height:100px; border-radius:50%; z-index:2;
+  grid-column:1 / -1; justify-self:center;
+  width:100px; height:100px; border-radius:50%;
   background:conic-gradient(from 0deg, var(--v-pink), var(--nebula), var(--v-cyan), var(--v-pink));
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 0 50px rgba(37,244,238,0.3);
+  margin-bottom:8px;
 }
 .vibe-center-badge span{
   background:var(--cosmic); width:86px; height:86px; border-radius:50%;
@@ -77,18 +79,12 @@
 }
 
 .vibe-star{
-  position:absolute; top:50%; left:50%; width:190px; margin-left:-95px; margin-top:-70px;
-  text-align:center; z-index:1; text-decoration:none; color:var(--v-text);
-  transition:transform .25s ease;
+  width:100%; max-width:280px; text-align:center; text-decoration:none; color:var(--v-text);
+  padding:20px 16px; border-radius:18px; border:1px solid rgba(255,233,168,0.18);
+  transition:transform .2s ease, background .2s ease;
 }
-.vibe-star:not(.soon):hover{transform:scale(1.05) translateY(-4px) !important;}
+.vibe-star:not(.soon):hover{transform:translateY(-4px); background:rgba(255,255,255,0.03);}
 .vibe-star.soon{opacity:0.4; cursor:default;}
-
-/* đặt 4 điểm quanh vòng tròn bán kính 220px, góc 45/135/225/315 độ */
-.pos-1{ transform:translate(-155px, -155px); }
-.pos-2{ transform:translate(155px, -155px); }
-.pos-3{ transform:translate(-155px, 155px); }
-.pos-4{ transform:translate(155px, 155px); }
 
 .vibe-star-icon{
   width:58px; height:58px; border-radius:50%; margin:0 auto 10px;
@@ -100,10 +96,8 @@
 .vibe-star h4{font-size:15px; margin-bottom:6px; color:var(--gold);}
 .vibe-star p{font-size:12px; opacity:0.65; line-height:1.5;}
 
-@media (max-width:720px){
-  .vibe-ring{width:auto; height:auto; max-width:none; display:flex; flex-direction:column; gap:20px; align-items:center;}
-  .vibe-center-badge{position:static; transform:none; order:-1; margin-bottom:6px;}
-  .vibe-star{position:static; margin:0; transform:none !important; width:100%; max-width:320px;}
+@media (max-width:600px){
+  .vibe-ring{grid-template-columns:1fr;}
 }
 
 .vibe-footer{text-align:center; padding:30px 0 60px; opacity:0.6; font-size:13px;}
