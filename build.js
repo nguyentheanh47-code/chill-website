@@ -121,6 +121,7 @@ function headerHTML() {
       <li><a href="/mentor/">Mentor</a></li>
       <li><a href="/hall-of-fame/">Hall of Fame</a></li>
       <li><a href="/tips/" class="active">Blog/Tips</a></li>
+      <li><a href="/check-vibe/">🔮 Check Vibe</a></li>
       <li><a href="/lien-he/">Liên hệ</a></li>
     </ul>
     <div class="navcta"><a href="/lien-he/" class="btn btn-primary">Đăng ký ứng tuyển</a></div>
@@ -293,6 +294,8 @@ function buildSitemap(posts) {
     { url: "/tips/", priority: "0.8" },
     { url: "/lien-he/", priority: "0.9" },
     { url: "/faq/", priority: "0.7" },
+    { url: "/check-vibe/", priority: "0.8" },
+    { url: "/check-vibe/xin-xam/", priority: "0.7" },
   ];
 
   const staticEntries = staticPages.map(
