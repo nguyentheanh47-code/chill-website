@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xin Xăm Vũ Trụ — Check Vibe Vũ Trụ | Chill Entertainment</title>
+<meta name="description" content="Lắc xăm nhận số may mắn 1-100, xem luận giải từ Vũ Trụ và bản dịch Gen Z từ Mr. Chill.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/check-vibe/vibe.css">
+<link rel="canonical" href="https://chillentertainment.vn/check-vibe/xin-xam/">
+</head>
+<body class="vibe-body">
+
+<div class="vibe-stars"></div>
+<div class="vibe-nebula"></div>
+
+<header class="vibe-header">
+  <div class="wrap vibe-header-inner">
+    <a href="/check-vibe/" class="vibe-back">← Check Vibe Vũ Trụ</a>
+    <a href="/" class="vibe-logo">Chill<span>✦</span></a>
+  </div>
+</header>
+
+<div class="xam-wrap">
+  <div class="vibe-eyebrow">🎴 Xin Xăm Vũ Trụ</div>
+  <h1 style="font-size:clamp(28px,5vw,40px); font-weight:900; margin-bottom:12px;">Lắc 1 lá, biết vận hôm nay</h1>
+  <p class="xam-hint">Nhắm mắt 3 giây, nghĩ về điều bạn đang thắc mắc, rồi bấm vào lọ xăm</p>
+
+  <div class="xam-jar" id="xamJar">🎋</div>
+
+  <div class="xam-number" id="xamNumber"></div>
+
+  <button class="xam-btn" id="xamRevealBtn" style="display:none;">Xem luận giải</button>
+
+  <div class="xam-result" id="xamResult">
+    <span class="xam-bac" id="xamBac"></span>
+    <p>🌌 <b>Luận giải từ Vũ Trụ:</b> <span id="xamVutru"></span></p>
+    <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="xamChill"></span></p>
+    <a href="#" class="xam-again" id="xamAgain">↺ Lắc lá khác</a>
+  </div>
+</div>
+
+<footer class="vibe-footer">
+  <div class="wrap">
+    <p>Một sản phẩm giải trí từ <a href="/">Chill Entertainment</a> — Học viện đào tạo Idol Livestream</p>
+  </div>
+</footer>
+
+<script src="/check-vibe/xam-data.js"></script>
+<script>
+(function(){
+  var jar = document.getElementById('xamJar');
+  var numberEl = document.getElementById('xamNumber');
+  var revealBtn = document.getElementById('xamRevealBtn');
+  var resultEl = document.getElementById('xamResult');
+  var bacEl = document.getElementById('xamBac');
+  var vutruEl = document.getElementById('xamVutru');
+  var chillEl = document.getElementById('xamChill');
+  var againLink = document.getElementById('xamAgain');
+  var used = false;
+
+  function resetState(){
+    used = false;
+    numberEl.classList.remove('show');
+    numberEl.textContent = '';
+    revealBtn.style.display = 'none';
+    resultEl.classList.remove('show');
+    jar.style.pointerEvents = 'auto';
+    jar.textContent = '🎋';
+  }
+
+  jar.addEventListener('click', function(){
+    if (used) return;
+    used = true;
+    jar.classList.add('shaking');
+    jar.style.pointerEvents = 'none';
+
+    setTimeout(function(){
+      jar.classList.remove('shaking');
+      jar.textContent = '✨';
+      var so = Math.floor(Math.random() * 100) + 1;
+      numberEl.textContent = 'Lá số ' + so;
+      numberEl.classList.add('show');
+      numberEl.dataset.so = so;
+      revealBtn.style.display = 'inline-block';
+    }, 900);
+  });
+
+  revealBtn.addEventListener('click', function(){
+    var so = parseInt(numberEl.dataset.so, 10);
+    var data = XAM_DATA.filter(function(x){ return x.so === so; })[0];
+    if (!data) return;
+    bacEl.textContent = data.bac;
+    vutruEl.textContent = data.vutru;
+    chillEl.textContent = data.chill;
+    resultEl.classList.add('show');
+    revealBtn.style.display = 'none';
+  });
+
+  againLink.addEventListener('click', function(e){
+    e.preventDefault();
+    resetState();
+  });
+})();
+</script>
+
+</body>
+</html>
