@@ -27,12 +27,12 @@
 <div class="xam-wrap">
   <div class="vibe-eyebrow">🔭 Idol Xem Hộ</div>
   <h1 style="font-size:clamp(26px,5vw,36px); font-weight:900; margin-bottom:10px;">Xem phong thuỷ cho khán giả</h1>
-  <p class="xam-hint">Dùng khi đang live — nhập tên và năm sinh của khán giả để xem Con Giáp, Mệnh, vận 2026</p>
+  <p class="xam-hint">Dùng khi đang live — nhập tên và ngày sinh của khán giả để nhớ và xem Con Giáp, Mệnh, vận 2026</p>
 
   <div id="vibeForm" style="margin-top:24px;">
     <input type="text" id="vibeName" placeholder="Tên khán giả" style="width:100%; max-width:320px; padding:14px 18px; border-radius:999px; border:1px solid rgba(255,233,168,0.3); background:rgba(255,255,255,0.04); color:#F5F3FF; font-family:inherit; font-size:15px; margin-bottom:14px; text-align:center;">
     <br>
-    <input type="number" id="vibeYear" placeholder="Năm sinh (VD: 1998)" min="1930" max="2020" style="width:100%; max-width:320px; padding:14px 18px; border-radius:999px; border:1px solid rgba(255,233,168,0.3); background:rgba(255,255,255,0.04); color:#F5F3FF; font-family:inherit; font-size:15px; margin-bottom:20px; text-align:center;">
+    <input type="date" id="vibeBirthday" style="width:100%; max-width:320px; padding:14px 18px; border-radius:999px; border:1px solid rgba(255,233,168,0.3); background:rgba(255,255,255,0.04); color:#F5F3FF; font-family:inherit; font-size:15px; margin-bottom:20px; text-align:center;">
     <br>
     <button class="xam-btn" id="vibeSubmitBtn">Xem giúp khán giả</button>
     <p id="vibeError" style="display:none; color:#FE2C55; font-size:13px; margin-top:14px;"></p>
@@ -40,7 +40,8 @@
 
   <div class="xam-result" id="vibeResult">
     <span class="xam-bac" id="vibeBadge"></span>
-    <p id="vibeGreeting" style="font-weight:700; margin-bottom:6px;"></p>
+    <p id="vibeGreeting" style="font-weight:700; margin-bottom:2px;"></p>
+    <p id="vibeBirthdayFull" style="font-size:13px; opacity:0.7; margin-bottom:6px;"></p>
     <p id="vibeNapAmYNghia" style="font-size:13px; opacity:0.6; font-style:italic; margin-bottom:16px;"></p>
 
     <div class="pt-section">
@@ -77,12 +78,13 @@
 (function(){
   var form = document.getElementById('vibeForm');
   var nameInput = document.getElementById('vibeName');
-  var yearInput = document.getElementById('vibeYear');
+  var birthdayInput = document.getElementById('vibeBirthday');
   var submitBtn = document.getElementById('vibeSubmitBtn');
   var errorEl = document.getElementById('vibeError');
   var resultEl = document.getElementById('vibeResult');
   var badgeEl = document.getElementById('vibeBadge');
   var greetingEl = document.getElementById('vibeGreeting');
+  var birthdayFullEl = document.getElementById('vibeBirthdayFull');
   var napAmYNghiaEl = document.getElementById('vibeNapAmYNghia');
   var banMenhEl = document.getElementById('vibeBanMenh');
   var van2026El = document.getElementById('vibeVan2026');
@@ -91,10 +93,14 @@
 
   submitBtn.addEventListener('click', function(){
     var ten = nameInput.value.trim();
-    var namSinh = parseInt(yearInput.value, 10);
+    var ngaySinh = birthdayInput.value;
 
     if (!ten) { showError('Nhập tên khán giả giúp mình nha!'); return; }
-    if (!namSinh || namSinh < 1930 || namSinh > 2020) { showError('Nhập đúng năm sinh giúp mình nha (VD: 1998)!'); return; }
+    if (!ngaySinh) { showError('Chọn ngày sinh giúp mình nha!'); return; }
+
+    var d = new Date(ngaySinh + 'T00:00:00');
+    var namSinh = d.getFullYear();
+    var ngayFormat = String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + namSinh;
 
     var napAm = tinhNapAm(namSinh);
     var conGiap = tinhConGiap(namSinh);
@@ -102,6 +108,7 @@
 
     badgeEl.textContent = conGiap + ' · ' + napAm.ten;
     greetingEl.textContent = ten + ' — Mệnh ' + hanh;
+    birthdayFullEl.textContent = '🎂 Sinh ngày: ' + ngayFormat;
     napAmYNghiaEl.textContent = napAm.ten + ' (' + napAm.ynghia + ')';
     banMenhEl.textContent = BAN_MENH[hanh];
     van2026El.textContent = VAN_2026[hanh];
@@ -122,7 +129,7 @@
     resultEl.classList.remove('show');
     form.style.display = 'block';
     nameInput.value = '';
-    yearInput.value = '';
+    birthdayInput.value = '';
     nameInput.focus();
   });
 })();
