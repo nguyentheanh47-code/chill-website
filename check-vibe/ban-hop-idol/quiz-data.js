@@ -1,4 +1,4 @@
-// Kết quả trắc nghiệm "Bạn hợp Idol dạng gì" — Check Vibe Vũ Trụ
+// Kết quả trắc nghiệm "Nếu bạn làm idol bạn sẽ nổi tiếng vì điều gì" — Check Vibe Vũ Trụ
 var QUIZ_RESULTS = {
 
   "idol_NK": {
