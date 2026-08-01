@@ -166,3 +166,5 @@
 }
 .share-btn:hover{ background:rgba(255,255,255,0.1); }
 .share-btn svg{ width:18px; height:18px; flex:none; }
+.share-btn-row{ display:flex; gap:8px; margin-top:16px; }
+.share-btn-row .share-btn{ margin-top:0; flex:1; font-size:13px; padding:12px 8px; }
