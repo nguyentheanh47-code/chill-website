@@ -2,6 +2,18 @@
 // Cách dùng: generateShareCard({ icon, eyebrow, title, body }, function(blob){ ... })
 
 function generateShareCard(opts, callback) {
+  // Đợi font Montserrat tải xong hẳn trước khi vẽ chữ lên canvas
+  // (nếu vẽ khi font chưa tải xong, trình duyệt tự động dùng font hệ thống thay thế -> dễ lỗi dấu tiếng Việt)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.load("800 54px 'Montserrat'").then(function(){
+      document.fonts.ready.then(function(){ drawShareCard(opts, callback); });
+    });
+  } else {
+    drawShareCard(opts, callback);
+  }
+}
+
+function drawShareCard(opts, callback) {
   var W = 1080, H = 1350;
   var canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
@@ -37,33 +49,33 @@ function generateShareCard(opts, callback) {
 
   // Logo/tên nhãn góc trên
   ctx.fillStyle = '#25F4EE';
-  ctx.font = '700 30px sans-serif';
+  ctx.font = "700 30px 'Montserrat', Arial, sans-serif";
   ctx.textAlign = 'center';
   ctx.fillText('CHECK VIBE VŨ TRỤ', W/2, 90);
 
   // Icon lớn
-  ctx.font = '120px sans-serif';
+  ctx.font = "120px 'Montserrat', Arial, sans-serif";
   ctx.fillText(opts.icon || '🔮', W/2, 260);
 
   // Eyebrow nhỏ
   ctx.fillStyle = '#FFE9A8';
-  ctx.font = '700 26px sans-serif';
+  ctx.font = "700 26px 'Montserrat', Arial, sans-serif";
   ctx.fillText((opts.eyebrow || '').toUpperCase(), W/2, 330);
 
   // Tiêu đề chính (wrap nếu dài)
   ctx.fillStyle = '#F5F3FF';
-  ctx.font = '800 54px sans-serif';
+  ctx.font = "800 54px 'Montserrat', Arial, sans-serif";
   wrapText(ctx, opts.title || '', W/2, 410, W - 140, 64);
 
   // Nội dung chính (wrap, cỡ vừa)
   ctx.fillStyle = 'rgba(245,243,255,0.92)';
-  ctx.font = '400 34px sans-serif';
+  ctx.font = "400 34px 'Montserrat', Arial, sans-serif";
   var bodyStartY = 410 + (countLines(ctx, opts.title || '', W - 140) * 64) + 60;
   wrapText(ctx, opts.body || '', W/2, bodyStartY, W - 160, 46);
 
   // Chân trang thương hiệu
   ctx.fillStyle = 'rgba(245,243,255,0.5)';
-  ctx.font = '400 26px sans-serif';
+  ctx.font = "400 26px 'Montserrat', Arial, sans-serif";
   ctx.fillText('chillentertainment.vn/check-vibe', W/2, H - 60);
 
   canvas.toBlob(function(blob){ callback(blob); }, 'image/png', 0.92);
