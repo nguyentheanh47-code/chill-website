@@ -209,11 +209,16 @@
 
     var shareBtn = document.getElementById('quizShareBtn');
     var downloadBtn = document.getElementById('quizDownloadBtn');
-    var text = '✨ Kết quả: ' + data.ten + '\n\n' + data.mota + '\n\n🎤 Mr. Chill: ' + data.chill;
+    var caption = 'Kết quả trắc nghiệm: ' + data.ten + ' ✨ ' + data.chill;
     var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
 
     shareBtn.onclick = function(){
-      shareQuickText(text, url, shareBtn);
+      shareQuickCard({
+        icon: '✨',
+        eyebrow: 'Kết quả trắc nghiệm',
+        title: data.ten,
+        body: data.chill
+      }, caption, url, shareBtn, 'ket-qua-trac-nghiem.png');
     };
 
     downloadBtn.onclick = function(){
