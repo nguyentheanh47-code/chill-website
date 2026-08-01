@@ -116,19 +116,29 @@ function countLines(ctx, text, maxWidth) {
 }
 
 // Chia sẻ nhanh — chỉ chữ + link, mở bảng chia sẻ hệ điều hành (gửi tin nhắn Zalo/Messenger nhanh)
-function shareQuickText(shareText, shareUrl, btnEl) {
-  var fullText = shareText;
-  if (navigator.share) {
-    navigator.share({ title: 'Check Vibe Vũ Trụ', text: shareText, url: shareUrl }).catch(function(){});
-  } else {
-    navigator.clipboard.writeText(fullText + '\n\n' + shareUrl).then(function(){
-      if (btnEl) {
-        var oldText = btnEl.textContent;
-        btnEl.textContent = '✅ Đã copy!';
-        setTimeout(function(){ btnEl.textContent = oldText; }, 2000);
-      }
-    });
-  }
+// Chia sẻ nhanh — gửi kèm ẢNH thật của kết quả + câu ngắn gọn, để tin nhắn hiện đúng ảnh (không bị Zalo/Facebook tự lấy ảnh chung chung)
+function shareQuickCard(cardOpts, shortCaption, shareUrl, btnEl, filename) {
+  var oldText = btnEl ? btnEl.textContent : '';
+  if (btnEl) btnEl.textContent = '⏳ Đang tạo ảnh...';
+
+  generateShareCard(cardOpts, function(blob){
+    if (btnEl) btnEl.textContent = oldText;
+    var file = new File([blob], filename, { type: 'image/png' });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], text: shortCaption }).catch(function(){});
+    } else if (navigator.share) {
+      // Máy không hỗ trợ gửi kèm ảnh -> gửi chữ + link như cũ
+      navigator.share({ title: 'Check Vibe Vũ Trụ', text: shortCaption, url: shareUrl }).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(shortCaption + '\n\n' + shareUrl).then(function(){
+        if (btnEl) {
+          btnEl.textContent = '✅ Đã copy!';
+          setTimeout(function(){ btnEl.textContent = oldText; }, 2000);
+        }
+      });
+    }
+  });
 }
 
 // Tải ảnh đẹp về máy — dành cho ai muốn đăng lên feed/tường kèm hình
