@@ -73,6 +73,7 @@
   </div>
 </footer>
 
+<script src="/check-vibe/share-card.js"></script>
 <script src="/check-vibe/vibe-hom-nay/vibe-data.js"></script>
 <script>
 (function(){
@@ -123,16 +124,18 @@
 
     var shareBtn = document.getElementById('vibeShareBtn');
     shareBtn.onclick = function(){
-      var text = 'Vibe hôm nay của mình: ' + tiet.ten + ' · ' + cung + ' 🌙 ' + data.chill;
-      var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
-      if (navigator.share) {
-        navigator.share({ title: 'Vibe Hôm Nay', text: text, url: url }).catch(function(){});
-      } else {
-        navigator.clipboard.writeText(text + ' ' + url).then(function(){
-          shareBtn.textContent = '✅ Đã copy, dán vào Zalo/Facebook nha!';
-          setTimeout(function(){ shareBtn.textContent = '📤 Chia sẻ kết quả'; }, 2500);
-        });
-      }
+      shareBtn.textContent = '⏳ Đang tạo ảnh...';
+      generateShareCard({
+        icon: '🌙',
+        eyebrow: tiet.ten + ' · ' + cung,
+        title: 'Vibe hôm nay của ' + ten,
+        body: data.chill
+      }, function(blob){
+        shareBtn.textContent = '📤 Chia sẻ kết quả';
+        var text = tiet.ten + ' · ' + cung + ' — ' + data.chill;
+        var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
+        shareCardImage(blob, 'vibe-hom-nay.png', text, url, shareBtn);
+      });
     };
 
     form.style.display = 'none';
