@@ -62,6 +62,7 @@
     <p id="vibeGreeting" style="font-weight:700; margin-bottom:16px;"></p>
     <p>🌌 <b>Vũ trụ gửi vibe hôm nay cho bạn:</b> <span id="vibeVutru"></span></p>
     <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="vibeChill"></span></p>
+    <button class="share-btn" id="vibeShareBtn">📤 Chia sẻ kết quả</button>
     <a href="#" class="xam-again" id="vibeAgain">↺ Xem lại cho người khác</a>
   </div>
 </div>
@@ -119,6 +120,20 @@
     greetingEl.textContent = 'Chào ' + ten + '!';
     vutruEl.textContent = data.vutru;
     chillEl.textContent = data.chill;
+
+    var shareBtn = document.getElementById('vibeShareBtn');
+    shareBtn.onclick = function(){
+      var text = 'Vibe hôm nay của mình: ' + tiet.ten + ' · ' + cung + ' 🌙 ' + data.chill;
+      var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
+      if (navigator.share) {
+        navigator.share({ title: 'Vibe Hôm Nay', text: text, url: url }).catch(function(){});
+      } else {
+        navigator.clipboard.writeText(text + ' ' + url).then(function(){
+          shareBtn.textContent = '✅ Đã copy, dán vào Zalo/Facebook nha!';
+          setTimeout(function(){ shareBtn.textContent = '📤 Chia sẻ kết quả'; }, 2500);
+        });
+      }
+    };
 
     form.style.display = 'none';
     resultEl.classList.add('show');
