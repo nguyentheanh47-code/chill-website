@@ -83,6 +83,7 @@
   </div>
 </footer>
 
+<script src="/check-vibe/share-card.js"></script>
 <script src="/check-vibe/ban-hop-idol/quiz-data.js"></script>
 <script>
 (function(){
@@ -205,16 +206,18 @@
 
     var shareBtn = document.getElementById('quizShareBtn');
     shareBtn.onclick = function(){
-      var text = 'Mình vừa làm trắc nghiệm và ra kết quả: ' + data.ten + ' ✨ Bạn thì sao?';
-      var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
-      if (navigator.share) {
-        navigator.share({ title: data.ten, text: text, url: url }).catch(function(){});
-      } else {
-        navigator.clipboard.writeText(text + ' ' + url).then(function(){
-          shareBtn.textContent = '✅ Đã copy, dán vào Zalo/Facebook nha!';
-          setTimeout(function(){ shareBtn.textContent = '📤 Chia sẻ kết quả'; }, 2500);
-        });
-      }
+      shareBtn.textContent = '⏳ Đang tạo ảnh...';
+      generateShareCard({
+        icon: '✨',
+        eyebrow: 'Kết quả trắc nghiệm',
+        title: data.ten,
+        body: data.chill
+      }, function(blob){
+        shareBtn.textContent = '📤 Chia sẻ kết quả';
+        var text = data.ten + ' — ' + data.chill;
+        var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
+        shareCardImage(blob, 'ket-qua-trac-nghiem.png', text, url, shareBtn);
+      });
     };
 
     progressWrap.style.display = 'none';
