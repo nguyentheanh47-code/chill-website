@@ -127,11 +127,16 @@
 
     var shareBtn = document.getElementById('vibeShareBtn');
     var downloadBtn = document.getElementById('vibeDownloadBtn');
-    var text = '🌙 Vibe hôm nay của ' + ten + ': ' + tiet.ten + ' · ' + cung + '\n\n🌌 Vũ trụ gửi vibe hôm nay: ' + data.vutru + '\n✨ Mr. Chill giải: ' + data.chill;
+    var caption = 'Vibe hôm nay của ' + ten + ': ' + tiet.ten + ' · ' + cung + ' 🌙 ' + data.chill;
     var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
 
     shareBtn.onclick = function(){
-      shareQuickText(text, url, shareBtn);
+      shareQuickCard({
+        icon: '🌙',
+        eyebrow: tiet.ten + ' · ' + cung,
+        title: 'Vibe hôm nay của ' + ten,
+        body: data.chill
+      }, caption, url, shareBtn, 'vibe-hom-nay.png');
     };
 
     downloadBtn.onclick = function(){
