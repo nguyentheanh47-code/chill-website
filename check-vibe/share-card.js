@@ -104,28 +104,32 @@ function countLines(ctx, text, maxWidth) {
 }
 
 // Hàm chia sẻ/tải ảnh — dùng chung
+// Lưu ý: Facebook/Zalo qua "share" hệ điều hành thường CHỈ cho gửi tin nhắn, không đăng thẳng lên tường được (giới hạn từ chính nền tảng đó, không phải do web).
+// Nên luôn tải ảnh về máy + copy sẵn chữ, để người dùng tự đăng bài mới (lên được cả tường/feed) thay vì chỉ trông chờ share hệ điều hành.
 function shareCardImage(blob, filename, shareText, shareUrl, btnEl) {
-  var file = new File([blob], filename, { type: 'image/png' });
+  // Luôn tải ảnh về trước
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
+  // Luôn copy sẵn chữ (nếu trình duyệt hỗ trợ)
+  var fullText = shareText + '\n\n' + shareUrl;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(fullText).catch(function(){});
+  }
+
+  if (btnEl) {
+    var oldText = btnEl.textContent;
+    btnEl.textContent = '✅ Đã tải ảnh + copy chữ! Mở FB/Zalo đăng bài mới, dán chữ + đính ảnh nha';
+    setTimeout(function(){ btnEl.textContent = oldText; }, 4500);
+  }
+
+  // Nếu máy hỗ trợ chia sẻ nhanh qua tin nhắn (Zalo/Messenger...) thì vẫn mở thêm cho tiện, không bắt buộc dùng
+  var file = new File([blob], filename, { type: 'image/png' });
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    navigator.share({
-      files: [file],
-      title: 'Check Vibe Vũ Trụ',
-      text: shareText,
-      url: shareUrl
-    }).catch(function(){});
-  } else {
-    // Trình duyệt không hỗ trợ chia sẻ ảnh trực tiếp -> tự tải ảnh về
-    var link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    if (btnEl) {
-      var oldText = btnEl.textContent;
-      btnEl.textContent = '✅ Đã tải ảnh! Đăng lên Facebook/Zalo nha';
-      setTimeout(function(){ btnEl.textContent = oldText; }, 3000);
-    }
+    navigator.share({ files: [file], title: 'Check Vibe Vũ Trụ', text: shareText, url: shareUrl }).catch(function(){});
   }
 }
