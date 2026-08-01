@@ -113,11 +113,16 @@
 
     var shareBtn = document.getElementById('xamShareBtn');
     var downloadBtn = document.getElementById('xamDownloadBtn');
-    var text = '🎋 Lá số ' + so + ' — ' + data.bac + '\n\n🌌 Luận giải từ Vũ Trụ: ' + data.vutru + '\n✨ Mr. Chill giải: ' + data.chill;
+    var caption = 'Lá số ' + so + ' — ' + data.bac + ' 🎋 ' + data.chill;
     var url = 'https://chillentertainment.vn/check-vibe/xin-xam/';
 
     shareBtn.onclick = function(){
-      shareQuickText(text, url, shareBtn);
+      shareQuickCard({
+        icon: '🎋',
+        eyebrow: data.bac,
+        title: 'Lá số ' + so,
+        body: data.chill
+      }, caption, url, shareBtn, 'xin-xam-la-so-' + so + '.png');
     };
 
     downloadBtn.onclick = function(){
