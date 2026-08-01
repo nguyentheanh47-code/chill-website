@@ -149,8 +149,9 @@ function footerHTML() {
 <script src="/assets/blog.js" defer></script>`;
 }
 
-function cardHTML(p) {
-  const img = p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">` : "";
+function cardHTML(p, eager) {
+  const loadingAttr = eager ? "" : ` loading="lazy"`;
+  const img = p.cover ? `<img src="${p.cover}" alt="${p.title}"${loadingAttr}>` : "";
   return `<a href="/tips/${p.slug}/" class="tip-card">
   <div class="tip-thumb">${img}</div>
   <div class="tip-body">
@@ -243,7 +244,7 @@ ${footerHTML()}
 // ---------- Trang danh sách blog (/tips/) ----------
 
 function buildBlogListPage(allPosts) {
-  const cards = allPosts.map(cardHTML).join("\n      ");
+  const cards = allPosts.map((p, i) => cardHTML(p, i < 3)).join("\n      ");
   return `<!DOCTYPE html>
 <html lang="vi">
 <head>
