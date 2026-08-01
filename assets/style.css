@@ -433,6 +433,7 @@ footer.site{ background:var(--ink); color:rgba(255,255,255,.6); padding:56px 0 3
   .floating-contact{ right:14px; bottom:14px; gap:10px; }
   .fc-btn{ width:46px; height:46px; }
   .fc-btn svg{ width:20px; height:20px; }
+  .article-body p{ text-align:left; }
 }
 
 @media (prefers-reduced-motion: reduce){
