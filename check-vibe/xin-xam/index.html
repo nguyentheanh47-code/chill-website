@@ -46,7 +46,7 @@
     <span class="xam-bac" id="xamBac"></span>
     <p>🌌 <b>Luận giải từ Vũ Trụ:</b> <span id="xamVutru"></span></p>
     <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="xamChill"></span></p>
-    <button class="share-btn" id="xamShareBtn">📤 Chia sẻ kết quả</button>
+    <button class="share-btn" id="xamShareBtn">📤 Tải ảnh + Copy chữ để đăng</button>
     <a href="#" class="xam-again" id="xamAgain">↺ Lắc lá khác</a>
   </div>
 </div>
@@ -117,7 +117,7 @@
         title: 'Lá số ' + so,
         body: data.chill
       }, function(blob){
-        shareBtn.textContent = '📤 Chia sẻ kết quả';
+        shareBtn.textContent = '📤 Tải ảnh + Copy chữ để đăng';
         var text = data.bac + ' — ' + data.chill;
         var url = 'https://chillentertainment.vn/check-vibe/xin-xam/';
         shareCardImage(blob, 'xin-xam-la-so-' + so + '.png', text, url, shareBtn);
