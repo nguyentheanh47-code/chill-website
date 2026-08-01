@@ -126,7 +126,7 @@ function shareQuickCard(cardOpts, shortCaption, shareUrl, btnEl, filename) {
     var file = new File([blob], filename, { type: 'image/png' });
 
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      navigator.share({ files: [file], text: shortCaption }).catch(function(){});
+      navigator.share({ files: [file], text: shortCaption + '\n' + shareUrl }).catch(function(){});
     } else if (navigator.share) {
       // Máy không hỗ trợ gửi kèm ảnh -> gửi chữ + link như cũ
       navigator.share({ title: 'Check Vibe Vũ Trụ', text: shortCaption, url: shareUrl }).catch(function(){});
