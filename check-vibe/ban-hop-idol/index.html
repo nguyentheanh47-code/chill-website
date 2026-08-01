@@ -58,7 +58,10 @@
       <a href="/mentor/" class="quiz-cta-secondary">Xem lộ trình cùng Mentor →</a>
     </div>
 
-    <button class="share-btn" id="quizShareBtn">📤 Tải ảnh + Copy chữ để đăng</button>
+    <div class="share-btn-row">
+      <button class="share-btn" id="quizShareBtn">📤 Chia sẻ nhanh</button>
+      <button class="share-btn" id="quizDownloadBtn">🖼️ Tải ảnh đẹp</button>
+    </div>
 
     <div id="phoneOptIn" style="margin-top:24px; padding-top:20px; border-top:1px dashed rgba(255,233,168,0.3);">
       <p style="font-size:14px; margin-bottom:12px;">🌟 Ê, vũ trụ thấy bạn có tố chất đó — để lại số Zalo, Mr. Chill gửi thêm quà nhỏ/tư vấn miễn phí nha (không bắt buộc)</p>
@@ -205,18 +208,24 @@
     phoneFormResultType.value = data.ten;
 
     var shareBtn = document.getElementById('quizShareBtn');
+    var downloadBtn = document.getElementById('quizDownloadBtn');
+    var text = data.ten + ' — ' + data.chill;
+    var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
+
     shareBtn.onclick = function(){
-      shareBtn.textContent = '⏳ Đang tạo ảnh...';
+      shareQuickText(text, url, shareBtn);
+    };
+
+    downloadBtn.onclick = function(){
+      downloadBtn.textContent = '⏳ Đang tạo ảnh...';
       generateShareCard({
         icon: '✨',
         eyebrow: 'Kết quả trắc nghiệm',
         title: data.ten,
         body: data.chill
       }, function(blob){
-        shareBtn.textContent = '📤 Tải ảnh + Copy chữ để đăng';
-        var text = data.ten + ' — ' + data.chill;
-        var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
-        shareCardImage(blob, 'ket-qua-trac-nghiem.png', text, url, shareBtn);
+        downloadBtn.textContent = '🖼️ Tải ảnh đẹp';
+        downloadCardImage(blob, 'ket-qua-trac-nghiem.png', downloadBtn);
       });
     };
 
