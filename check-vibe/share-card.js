@@ -132,16 +132,29 @@ function shareQuickText(shareText, shareUrl, btnEl) {
 }
 
 // Tải ảnh đẹp về máy — dành cho ai muốn đăng lên feed/tường kèm hình
+// Lưu ý: thẻ <a download> không hoạt động đúng trên Safari iPhone (hay bị mở link/đứng trang) -> ưu tiên dùng share ảnh qua hệ điều hành (có tuỳ chọn "Lưu vào Ảnh"), chỉ dùng cách tải file cũ khi máy không hỗ trợ.
 function downloadCardImage(blob, filename, btnEl) {
-  var link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  if (btnEl) {
-    var oldText = btnEl.textContent;
-    btnEl.textContent = '✅ Đã tải ảnh!';
-    setTimeout(function(){ btnEl.textContent = oldText; }, 2000);
+  var file = new File([blob], filename, { type: 'image/png' });
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    navigator.share({ files: [file] }).then(function(){
+      if (btnEl) {
+        var oldText = btnEl.textContent;
+        btnEl.textContent = '✅ Chọn "Lưu vào Ảnh" nhé!';
+        setTimeout(function(){ btnEl.textContent = oldText; }, 2500);
+      }
+    }).catch(function(){});
+  } else {
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    if (btnEl) {
+      var oldText2 = btnEl.textContent;
+      btnEl.textContent = '✅ Đã tải ảnh!';
+      setTimeout(function(){ btnEl.textContent = oldText2; }, 2000);
+    }
   }
 }
