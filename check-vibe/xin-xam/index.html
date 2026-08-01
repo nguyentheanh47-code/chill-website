@@ -46,6 +46,7 @@
     <span class="xam-bac" id="xamBac"></span>
     <p>🌌 <b>Luận giải từ Vũ Trụ:</b> <span id="xamVutru"></span></p>
     <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="xamChill"></span></p>
+    <button class="share-btn" id="xamShareBtn">📤 Chia sẻ kết quả</button>
     <a href="#" class="xam-again" id="xamAgain">↺ Lắc lá khác</a>
   </div>
 </div>
@@ -105,6 +106,20 @@
     chillEl.textContent = data.chill;
     resultEl.classList.add('show');
     revealBtn.style.display = 'none';
+
+    var shareBtn = document.getElementById('xamShareBtn');
+    shareBtn.onclick = function(){
+      var text = 'Mình vừa lắc được lá số ' + so + ' — ' + data.bac + ' trên Check Vibe Vũ Trụ! Thử vận may của bạn xem sao 🎋';
+      var url = 'https://chillentertainment.vn/check-vibe/xin-xam/';
+      if (navigator.share) {
+        navigator.share({ title: 'Xin Xăm Vũ Trụ', text: text, url: url }).catch(function(){});
+      } else {
+        navigator.clipboard.writeText(text + ' ' + url).then(function(){
+          shareBtn.textContent = '✅ Đã copy, dán vào Zalo/Facebook nha!';
+          setTimeout(function(){ shareBtn.textContent = '📤 Chia sẻ kết quả'; }, 2500);
+        });
+      }
+    };
   });
 
   againLink.addEventListener('click', function(e){
