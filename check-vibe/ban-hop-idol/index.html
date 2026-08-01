@@ -58,6 +58,8 @@
       <a href="/mentor/" class="quiz-cta-secondary">Xem lộ trình cùng Mentor →</a>
     </div>
 
+    <button class="share-btn" id="quizShareBtn">📤 Chia sẻ kết quả</button>
+
     <div id="phoneOptIn" style="margin-top:24px; padding-top:20px; border-top:1px dashed rgba(255,233,168,0.3);">
       <p style="font-size:14px; margin-bottom:12px;">🌟 Ê, vũ trụ thấy bạn có tố chất đó — để lại số Zalo, Mr. Chill gửi thêm quà nhỏ/tư vấn miễn phí nha (không bắt buộc)</p>
       <form name="check-vibe-tracnghiem" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="phoneForm">
@@ -200,6 +202,20 @@
     descEl.textContent = data.mota;
     chillEl.innerHTML = '<b>Mr. Chill:</b> ' + data.chill;
     phoneFormResultType.value = data.ten;
+
+    var shareBtn = document.getElementById('quizShareBtn');
+    shareBtn.onclick = function(){
+      var text = 'Mình vừa làm trắc nghiệm và ra kết quả: ' + data.ten + ' ✨ Bạn thì sao?';
+      var url = 'https://chillentertainment.vn/check-vibe/ban-hop-idol/';
+      if (navigator.share) {
+        navigator.share({ title: data.ten, text: text, url: url }).catch(function(){});
+      } else {
+        navigator.clipboard.writeText(text + ' ' + url).then(function(){
+          shareBtn.textContent = '✅ Đã copy, dán vào Zalo/Facebook nha!';
+          setTimeout(function(){ shareBtn.textContent = '📤 Chia sẻ kết quả'; }, 2500);
+        });
+      }
+    };
 
     progressWrap.style.display = 'none';
     questionArea.style.display = 'none';
