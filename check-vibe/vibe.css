@@ -157,3 +157,12 @@
   display:inline-block; margin-top:20px; font-size:13px; color:var(--v-cyan); text-decoration:none;
   border-bottom:1px dashed var(--v-cyan);
 }
+.share-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; margin-top:16px; padding:13px; border-radius:999px; border:none; cursor:pointer;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,233,168,0.3);
+  color:var(--v-text); font-family:inherit; font-size:14px; font-weight:700;
+  transition:background .2s ease;
+}
+.share-btn:hover{ background:rgba(255,255,255,0.1); }
+.share-btn svg{ width:18px; height:18px; flex:none; }
