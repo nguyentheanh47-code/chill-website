@@ -46,7 +46,10 @@
     <span class="xam-bac" id="xamBac"></span>
     <p>🌌 <b>Luận giải từ Vũ Trụ:</b> <span id="xamVutru"></span></p>
     <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="xamChill"></span></p>
-    <button class="share-btn" id="xamShareBtn">📤 Tải ảnh + Copy chữ để đăng</button>
+    <div class="share-btn-row">
+      <button class="share-btn" id="xamShareBtn">📤 Chia sẻ nhanh</button>
+      <button class="share-btn" id="xamDownloadBtn">🖼️ Tải ảnh đẹp</button>
+    </div>
     <a href="#" class="xam-again" id="xamAgain">↺ Lắc lá khác</a>
   </div>
 </div>
@@ -109,18 +112,24 @@
     revealBtn.style.display = 'none';
 
     var shareBtn = document.getElementById('xamShareBtn');
+    var downloadBtn = document.getElementById('xamDownloadBtn');
+    var text = data.bac + ' — ' + data.chill;
+    var url = 'https://chillentertainment.vn/check-vibe/xin-xam/';
+
     shareBtn.onclick = function(){
-      shareBtn.textContent = '⏳ Đang tạo ảnh...';
+      shareQuickText(text, url, shareBtn);
+    };
+
+    downloadBtn.onclick = function(){
+      downloadBtn.textContent = '⏳ Đang tạo ảnh...';
       generateShareCard({
         icon: '🎋',
         eyebrow: data.bac,
         title: 'Lá số ' + so,
         body: data.chill
       }, function(blob){
-        shareBtn.textContent = '📤 Tải ảnh + Copy chữ để đăng';
-        var text = data.bac + ' — ' + data.chill;
-        var url = 'https://chillentertainment.vn/check-vibe/xin-xam/';
-        shareCardImage(blob, 'xin-xam-la-so-' + so + '.png', text, url, shareBtn);
+        downloadBtn.textContent = '🖼️ Tải ảnh đẹp';
+        downloadCardImage(blob, 'xin-xam-la-so-' + so + '.png', downloadBtn);
       });
     };
   });
