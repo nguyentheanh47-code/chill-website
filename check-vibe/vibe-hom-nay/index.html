@@ -62,7 +62,10 @@
     <p id="vibeGreeting" style="font-weight:700; margin-bottom:16px;"></p>
     <p>🌌 <b>Vũ trụ gửi vibe hôm nay cho bạn:</b> <span id="vibeVutru"></span></p>
     <p class="xam-genz">✨ <b>Mr. Chill giải:</b> <span id="vibeChill"></span></p>
-    <button class="share-btn" id="vibeShareBtn">📤 Tải ảnh + Copy chữ để đăng</button>
+    <div class="share-btn-row">
+      <button class="share-btn" id="vibeShareBtn">📤 Chia sẻ nhanh</button>
+      <button class="share-btn" id="vibeDownloadBtn">🖼️ Tải ảnh đẹp</button>
+    </div>
     <a href="#" class="xam-again" id="vibeAgain">↺ Xem lại cho người khác</a>
   </div>
 </div>
@@ -123,18 +126,24 @@
     chillEl.textContent = data.chill;
 
     var shareBtn = document.getElementById('vibeShareBtn');
+    var downloadBtn = document.getElementById('vibeDownloadBtn');
+    var text = tiet.ten + ' · ' + cung + ' — ' + data.chill;
+    var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
+
     shareBtn.onclick = function(){
-      shareBtn.textContent = '⏳ Đang tạo ảnh...';
+      shareQuickText(text, url, shareBtn);
+    };
+
+    downloadBtn.onclick = function(){
+      downloadBtn.textContent = '⏳ Đang tạo ảnh...';
       generateShareCard({
         icon: '🌙',
         eyebrow: tiet.ten + ' · ' + cung,
         title: 'Vibe hôm nay của ' + ten,
         body: data.chill
       }, function(blob){
-        shareBtn.textContent = '📤 Tải ảnh + Copy chữ để đăng';
-        var text = tiet.ten + ' · ' + cung + ' — ' + data.chill;
-        var url = 'https://chillentertainment.vn/check-vibe/vibe-hom-nay/';
-        shareCardImage(blob, 'vibe-hom-nay.png', text, url, shareBtn);
+        downloadBtn.textContent = '🖼️ Tải ảnh đẹp';
+        downloadCardImage(blob, 'vibe-hom-nay.png', downloadBtn);
       });
     };
 
