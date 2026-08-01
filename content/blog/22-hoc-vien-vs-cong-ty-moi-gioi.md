@@ -1,7 +1,7 @@
 ---
 title: "Học viện đào tạo Idol khác gì công ty môi giới?"
 category: "Mentor Notes"
-date: "2026-08-05"
+date: "2026-08-01"
 excerpt: "Học viện đào tạo tập trung vào phát triển kỹ năng và đồng hành lâu dài, còn công ty môi giới thường chỉ dừng ở việc kết nối và tuyển số lượng."
 cover: "/images/blog/22-hoc-vien-vs-cong-ty-moi-gioi.jpg"
 focus_keyword: "học viện đào tạo idol khác gì công ty môi giới"
