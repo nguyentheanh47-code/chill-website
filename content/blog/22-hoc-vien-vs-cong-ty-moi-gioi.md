@@ -40,7 +40,7 @@ Một vài câu hỏi đơn giản giúp bạn nhận ra:
 
 ## Câu hỏi thường gặp
 
-### Học viện đào tạo và công ty môi giới, cái nào phù hợp hơn cho người mới bắt đầu?
+### Học viện đào tạo hay công ty môi giới phù hợp hơn cho người mới?
 
 Với người chưa có kinh nghiệm, mô hình học viện có Mentor đồng hành thường phù hợp hơn, vì giai đoạn đầu luôn cần hướng dẫn và động viên cụ thể.
 
