@@ -12,3 +12,11 @@
 }
 .quiz-opt:hover{ background:rgba(255,255,255,0.04); border-color:rgba(255,233,168,0.4); transform:translateX(2px); }
 .quiz-opt.selected{ background:rgba(254,44,85,0.18); border-color:var(--v-pink); opacity:1; }
+
+.quiz-cta{ margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,233,168,0.15); text-align:center; }
+.quiz-cta-btn{ display:block; text-decoration:none; }
+.quiz-cta-secondary{
+  display:inline-block; margin-top:12px; font-size:13.5px; color:var(--v-cyan);
+  text-decoration:none; border-bottom:1px dashed var(--v-cyan);
+}
+.quiz-cta-secondary:hover{ opacity:0.8; }
