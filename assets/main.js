@@ -43,17 +43,12 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
   document.body.appendChild(fc);
 
   // ---- 1b. Slideshow ảnh Idol ở trang chủ ----
-  // MUỐN THÊM/BỚT ẢNH: chỉ cần sửa danh sách bên dưới, không cần sửa gì khác.
-  // Đặt file ảnh tương ứng vào thư mục /images/ với đúng tên trong danh sách.
   var HERO_SLIDER_IMAGES = [
     "/images/hero-home-1.jpg",
     "/images/hero-home-2.jpg",
     "/images/hero-home-3.jpg",
     "/images/hero-home-4.jpg",
     "/images/hero-home-5.jpg"
-    // Thêm ảnh mới: chỉ cần thêm 1 dòng nữa vào đây, ví dụ:
-    // ,"/images/hero-home-6.jpg"
-    // rồi upload đúng file ảnh đó vào /images/ — không cần sửa gì khác.
   ];
   var SLIDE_INTERVAL_MS = 2000; // 2 giây mỗi ảnh
 
@@ -111,11 +106,10 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
           input.focus();
         }
       }
-      // Nếu không phải trang /tips/, để link chạy bình thường (chuyển tới /tips/)
     });
   }
 
-  // ---- 4. Trang Blog/Tips: phân trang "Xem thêm" (3 bài đầu, mỗi lần bấm hiện thêm 6) + tìm kiếm trực tiếp ----
+  // ---- 4. Trang Blog/Tips: phân trang "Xem thêm" + tìm kiếm trực tiếp ----
   window.ChillBlogSetup = function () {
     var listEl = document.getElementById("blog-list");
     var loadMoreWrap = document.getElementById("blogLoadMoreWrap");
@@ -178,6 +172,7 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
       };
     }
   };
+
   // ---- 5. Hiệu ứng nghiêng nhẹ theo chuột (3D tilt) — chỉ bật trên thiết bị có chuột thật ----
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasFineMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -223,4 +218,35 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
       );
     }
   }
+
+  // ---- 7. Chống chữ mồ côi (widow words) — hoạt động trên MỌI trình duyệt, không phụ thuộc CSS mới ----
+  // Nguyên lý: nối 2 từ cuối cùng của mỗi đoạn/tiêu đề bằng khoảng trắng "không được xuống dòng"
+  // (khác với text-wrap:pretty chỉ hỗ trợ 1 số trình duyệt, cách này chắc chắn hoạt động 100%)
+  function fixWidowWords(el) {
+    function getLastTextNode(node) {
+      for (var i = node.childNodes.length - 1; i >= 0; i--) {
+        var child = node.childNodes[i];
+        if (child.nodeType === 3 && child.textContent.replace(/\s/g, "").length > 0) return child;
+        if (child.nodeType === 1) {
+          var found = getLastTextNode(child);
+          if (found) return found;
+        }
+      }
+      return null;
+    }
+    var textNode = getLastTextNode(el);
+    if (!textNode) return;
+    var text = textNode.textContent;
+    var trimmed = text.replace(/\s+$/, "");
+    var lastSpaceIdx = trimmed.lastIndexOf(" ");
+    if (lastSpaceIdx > -1) {
+      textNode.textContent = trimmed.slice(0, lastSpaceIdx) + "\u00A0" + trimmed.slice(lastSpaceIdx + 1);
+    }
+  }
+
+  var widowTargets = document.querySelectorAll(
+    ".article-body p, .article-body li, .article-body h2, .article-body h3, " +
+    ".page-hero p, .page-hero h1, .value-item p, .tip-card p, .hero p.lead"
+  );
+  widowTargets.forEach(fixWidowWords);
 })();
