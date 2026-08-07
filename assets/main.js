@@ -223,30 +223,32 @@ var HOTLINE_TELEGRAM = "https://t.me/+84813787568"; // link Telegram
   // Nguyên lý: nối 2 từ cuối cùng của mỗi đoạn/tiêu đề bằng khoảng trắng "không được xuống dòng"
   // (khác với text-wrap:pretty chỉ hỗ trợ 1 số trình duyệt, cách này chắc chắn hoạt động 100%)
   function fixWidowWords(el) {
-    function getLastTextNode(node) {
-      for (var i = node.childNodes.length - 1; i >= 0; i--) {
+    function getTextNodes(node, arr) {
+      arr = arr || [];
+      for (var i = 0; i < node.childNodes.length; i++) {
         var child = node.childNodes[i];
-        if (child.nodeType === 3 && child.textContent.replace(/\s/g, "").length > 0) return child;
-        if (child.nodeType === 1) {
-          var found = getLastTextNode(child);
-          if (found) return found;
-        }
+        if (child.nodeType === 3) arr.push(child);
+        else if (child.nodeType === 1) getTextNodes(child, arr);
       }
-      return null;
+      return arr;
     }
-    var textNode = getLastTextNode(el);
-    if (!textNode) return;
-    var text = textNode.textContent;
-    var trimmed = text.replace(/\s+$/, "");
-    var lastSpaceIdx = trimmed.lastIndexOf(" ");
-    if (lastSpaceIdx > -1) {
-      textNode.textContent = trimmed.slice(0, lastSpaceIdx) + "\u00A0" + trimmed.slice(lastSpaceIdx + 1);
+    var textNodes = getTextNodes(el);
+    // Đi ngược từ text node cuối cùng lên, tìm node ĐẦU TIÊN (từ cuối lên) có khoảng trắng để nối
+    // (xử lý cả trường hợp text node cuối chỉ có dấu câu, không có khoảng trắng nào, như ".")
+    for (var i = textNodes.length - 1; i >= 0; i--) {
+      var node = textNodes[i];
+      var text = node.textContent;
+      var lastSpaceIdx = text.lastIndexOf(" ");
+      if (lastSpaceIdx > -1) {
+        node.textContent = text.slice(0, lastSpaceIdx) + "\u00A0" + text.slice(lastSpaceIdx + 1);
+        return;
+      }
     }
   }
 
   var widowTargets = document.querySelectorAll(
     ".article-body p, .article-body li, .article-body h2, .article-body h3, " +
-    ".page-hero p, .page-hero h1, .value-item p, .tip-card p, .hero p.lead"
+    ".page-hero p, .page-hero h1, .value-item p, .tip-card p, .hero p.lead, .hero h1"
   );
   widowTargets.forEach(fixWidowWords);
 })();
